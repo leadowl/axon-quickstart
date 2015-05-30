@@ -1,0 +1,6 @@
+**/.project
+**/.classpath
+**/target
+**/.settings
+/target/
+.~lock.calendar.xlsx#

@@ -53,11 +53,14 @@ public class ToDoItemRunner {
     // registering event listener
     AnnotationEventListenerAdapter.subscribe(new ToDoEventHandler(), eventBus);
 
+    entityManager.getTransaction().begin();
+
     // and let's send some Commands on the CommandBus.
     final String itemId = UUID.randomUUID().toString();
     commandGateway.send(new CreateToDoItemCommand(itemId, "Need to do this"));
     commandGateway.send(new MarkCompletedCommand(itemId));
 
+    entityManager.getTransaction().commit();
     entityManager.close();
     entityManagerFactory.close();
   }

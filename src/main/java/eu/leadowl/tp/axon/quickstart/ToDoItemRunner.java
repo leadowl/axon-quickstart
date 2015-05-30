@@ -10,6 +10,7 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.commandhandling.gateway.DefaultCommandGateway;
 import org.axonframework.eventhandling.EventBus;
 import org.axonframework.eventhandling.SimpleEventBus;
+import org.axonframework.eventhandling.annotation.AnnotationEventListenerAdapter;
 import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.axonframework.eventstore.EventStore;
 import org.axonframework.eventstore.fs.FileSystemEventStore;
@@ -18,6 +19,7 @@ import org.axonframework.eventstore.fs.SimpleEventFileResolver;
 import eu.leadowl.tp.axon.quickstart.aggregates.ToDoItem;
 import eu.leadowl.tp.axon.quickstart.commands.CreateToDoItemCommand;
 import eu.leadowl.tp.axon.quickstart.commands.MarkCompletedCommand;
+import eu.leadowl.tp.axon.quickstart.handlers.ToDoEventHandler;
 
 public class ToDoItemRunner {
 
@@ -42,6 +44,9 @@ public class ToDoItemRunner {
 
     // Axon needs to know that our ToDoItem Aggregate can handle commands
     AggregateAnnotationCommandHandler.subscribe(ToDoItem.class, repository, commandBus);
+
+    // registering event listener
+    AnnotationEventListenerAdapter.subscribe(new ToDoEventHandler(), eventBus);
 
     // and let's send some Commands on the CommandBus.
     final String itemId = UUID.randomUUID().toString();

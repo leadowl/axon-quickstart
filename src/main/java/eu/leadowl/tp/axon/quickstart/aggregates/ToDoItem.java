@@ -10,7 +10,12 @@ import eu.leadowl.tp.axon.quickstart.commands.MarkCompletedCommand;
 import eu.leadowl.tp.axon.quickstart.events.ToDoItemCompletedEvent;
 import eu.leadowl.tp.axon.quickstart.events.ToDoItemCreatedEvent;
 
-public class ToDoItem extends AbstractAnnotatedAggregateRoot {
+public class ToDoItem extends AbstractAnnotatedAggregateRoot<String> {
+
+  /**
+   *
+   */
+  private static final long serialVersionUID = -428487818685350322L;
 
   @AggregateIdentifier
   private String id;

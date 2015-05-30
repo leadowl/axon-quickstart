@@ -1,20 +1,23 @@
 package eu.leadowl.tp.axon.quickstart;
 
-import java.io.File;
 import java.util.UUID;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.SimpleCommandBus;
 import org.axonframework.commandhandling.annotation.AggregateAnnotationCommandHandler;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.commandhandling.gateway.DefaultCommandGateway;
+import org.axonframework.common.jpa.SimpleEntityManagerProvider;
 import org.axonframework.eventhandling.EventBus;
 import org.axonframework.eventhandling.SimpleEventBus;
 import org.axonframework.eventhandling.annotation.AnnotationEventListenerAdapter;
 import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.axonframework.eventstore.EventStore;
-import org.axonframework.eventstore.fs.FileSystemEventStore;
-import org.axonframework.eventstore.fs.SimpleEventFileResolver;
+import org.axonframework.eventstore.jpa.JpaEventStore;
 
 import eu.leadowl.tp.axon.quickstart.aggregate.ToDoItem;
 import eu.leadowl.tp.axon.quickstart.command.CreateToDoItemCommand;
@@ -30,9 +33,11 @@ public class ToDoItemRunner {
     // the CommandGateway provides a friendlier API
     final CommandGateway commandGateway = new DefaultCommandGateway(commandBus);
 
-    // we'll store Events on the FileSystem, in the "events/" folder
-    final EventStore eventStore =
-        new FileSystemEventStore(new SimpleEventFileResolver(new File("./events")));
+    final EntityManagerFactory entityManagerFactory =
+        Persistence.createEntityManagerFactory("eventStore");
+    final EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+    final EventStore eventStore = new JpaEventStore(new SimpleEntityManagerProvider(entityManager));
 
     // a Simple Event Bus will do
     final EventBus eventBus = new SimpleEventBus();
@@ -52,5 +57,8 @@ public class ToDoItemRunner {
     final String itemId = UUID.randomUUID().toString();
     commandGateway.send(new CreateToDoItemCommand(itemId, "Need to do this"));
     commandGateway.send(new MarkCompletedCommand(itemId));
+
+    entityManager.close();
+    entityManagerFactory.close();
   }
 }

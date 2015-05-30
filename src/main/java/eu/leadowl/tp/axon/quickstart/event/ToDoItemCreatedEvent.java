@@ -1,4 +1,4 @@
-package eu.leadowl.tp.axon.quickstart.events;
+package eu.leadowl.tp.axon.quickstart.event;
 
 public class ToDoItemCreatedEvent {
 

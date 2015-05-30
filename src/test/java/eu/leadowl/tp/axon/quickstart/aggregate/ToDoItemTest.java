@@ -1,14 +1,15 @@
-package eu.leadowl.tp.axon.quickstart.aggregates;
+package eu.leadowl.tp.axon.quickstart.aggregate;
 
 import org.axonframework.test.FixtureConfiguration;
 import org.axonframework.test.Fixtures;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.leadowl.tp.axon.quickstart.commands.CreateToDoItemCommand;
-import eu.leadowl.tp.axon.quickstart.commands.MarkCompletedCommand;
-import eu.leadowl.tp.axon.quickstart.events.ToDoItemCompletedEvent;
-import eu.leadowl.tp.axon.quickstart.events.ToDoItemCreatedEvent;
+import eu.leadowl.tp.axon.quickstart.aggregate.ToDoItem;
+import eu.leadowl.tp.axon.quickstart.command.CreateToDoItemCommand;
+import eu.leadowl.tp.axon.quickstart.command.MarkCompletedCommand;
+import eu.leadowl.tp.axon.quickstart.event.ToDoItemCompletedEvent;
+import eu.leadowl.tp.axon.quickstart.event.ToDoItemCreatedEvent;
 
 public class ToDoItemTest {
 

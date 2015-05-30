@@ -1,4 +1,4 @@
-package eu.leadowl.tp.axon.quickstart.commands;
+package eu.leadowl.tp.axon.quickstart.command;
 
 import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
 

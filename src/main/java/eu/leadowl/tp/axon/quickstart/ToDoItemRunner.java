@@ -16,10 +16,10 @@ import org.axonframework.eventstore.EventStore;
 import org.axonframework.eventstore.fs.FileSystemEventStore;
 import org.axonframework.eventstore.fs.SimpleEventFileResolver;
 
-import eu.leadowl.tp.axon.quickstart.aggregates.ToDoItem;
-import eu.leadowl.tp.axon.quickstart.commands.CreateToDoItemCommand;
-import eu.leadowl.tp.axon.quickstart.commands.MarkCompletedCommand;
-import eu.leadowl.tp.axon.quickstart.handlers.ToDoEventHandler;
+import eu.leadowl.tp.axon.quickstart.aggregate.ToDoItem;
+import eu.leadowl.tp.axon.quickstart.command.CreateToDoItemCommand;
+import eu.leadowl.tp.axon.quickstart.command.MarkCompletedCommand;
+import eu.leadowl.tp.axon.quickstart.handler.ToDoEventHandler;
 
 public class ToDoItemRunner {
 

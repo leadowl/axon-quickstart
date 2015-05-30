@@ -1,14 +1,14 @@
-package eu.leadowl.tp.axon.quickstart.aggregates;
+package eu.leadowl.tp.axon.quickstart.aggregate;
 
 import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 
-import eu.leadowl.tp.axon.quickstart.commands.CreateToDoItemCommand;
-import eu.leadowl.tp.axon.quickstart.commands.MarkCompletedCommand;
-import eu.leadowl.tp.axon.quickstart.events.ToDoItemCompletedEvent;
-import eu.leadowl.tp.axon.quickstart.events.ToDoItemCreatedEvent;
+import eu.leadowl.tp.axon.quickstart.command.CreateToDoItemCommand;
+import eu.leadowl.tp.axon.quickstart.command.MarkCompletedCommand;
+import eu.leadowl.tp.axon.quickstart.event.ToDoItemCompletedEvent;
+import eu.leadowl.tp.axon.quickstart.event.ToDoItemCreatedEvent;
 
 public class ToDoItem extends AbstractAnnotatedAggregateRoot<String> {
 

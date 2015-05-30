@@ -1,9 +1,9 @@
-package eu.leadowl.tp.axon.quickstart.handlers;
+package eu.leadowl.tp.axon.quickstart.handler;
 
 import org.axonframework.eventhandling.annotation.EventHandler;
 
-import eu.leadowl.tp.axon.quickstart.events.ToDoItemCompletedEvent;
-import eu.leadowl.tp.axon.quickstart.events.ToDoItemCreatedEvent;
+import eu.leadowl.tp.axon.quickstart.event.ToDoItemCompletedEvent;
+import eu.leadowl.tp.axon.quickstart.event.ToDoItemCreatedEvent;
 
 public class ToDoEventHandler {
 
